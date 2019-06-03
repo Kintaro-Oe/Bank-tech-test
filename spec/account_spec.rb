@@ -8,10 +8,15 @@ describe Account do
   end
 
   describe '#deposit' do
+    let(:account) { Account.new }
+
     it 'updates account balance' do
-      account = Account.new
       account.deposit(1000.00)
       expect(account.balance).to eq(1000.00)
+    end
+    it 'updates the account transactions' do
+      account.deposit(1000.00, '10-01-2012')
+      expect(account.transactions).to eq [['10-01-2012', 1000.00, ' ', 1000.00]]
     end
   end
 
@@ -21,6 +26,12 @@ describe Account do
       account.deposit(1000.00)
       account.withdraw(500.00)
       expect(account.balance).to eq(500.00)
+    end
+    it 'updates the account transactions' do
+      account = Account.new
+      account.deposit(1000.00, '10-01-2012')
+      account.withdraw(500.00, '14-01-2012')
+      expect(account.transactions).to eq [['10-01-2012', 1000.00, ' ', 1000.00], ['14-01-2012', 500.00, ' ', 500.00]]
     end
   end
 end
