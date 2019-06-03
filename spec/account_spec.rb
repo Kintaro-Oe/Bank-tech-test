@@ -14,4 +14,13 @@ describe Account do
       expect(account.balance).to eq(1000.00)
     end
   end
+
+  describe '#withdraw' do
+    it 'updates account balance' do
+      account = Account.new
+      account.deposit(1000.00)
+      account.withdraw(500.00)
+      expect(account.balance).to eq(500.00)
+    end
+  end
 end
