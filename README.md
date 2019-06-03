@@ -57,14 +57,14 @@ Specifications
 2.6.0 :001 > require './lib/account.rb'
  => true
 2.6.0 :002 > myAccount = Account.new
- => #<Account:0x00007ffafe885a58 @balance=0.0, @transactions=#<Transactions:0x00007ffafe885a30 @all=[]>>
+ => #<Account:0x00007fd9e918cd68 @balance=0.0, @transactions=#<Transactions:0x00007fd9e918cd40 @all=[]>>
 2.6.0 :003 > myAccount.deposit(1000.00, '10-01-2012')
  => [["10-01-2012", "1000.00", " ", "1000.00"]]
 2.6.0 :004 > myAccount.deposit(2000.00, '13-01-2012')
  => [["10-01-2012", "1000.00", " ", "1000.00"], ["13-01-2012", "2000.00", " ", "3000.00"]]
 2.6.0 :005 > myAccount.withdraw(500.00, '14-01-2012')
  => [["10-01-2012", "1000.00", " ", "1000.00"], ["13-01-2012", "2000.00", " ", "3000.00"], ["14-01-2012", " ", "500.00", "2500.00"]]
-2.6.0 :006 > myAccount.print_statement
+2.6.0 :006 > PrintOut.statement_of(myAccount.transactions)
 date || credit || debit || balance
 10-01-2012 || 1000.00 ||   || 1000.00
 13-01-2012 || 2000.00 ||   || 3000.00
