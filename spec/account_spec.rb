@@ -16,7 +16,7 @@ describe Account do
     end
     it 'updates the account transactions' do
       account.deposit(1000.00, '10-01-2012')
-      expect(account.transactions).to eq [['10-01-2012', 1000.00, ' ', 1000.00]]
+      expect(account.transactions.all).to eq [['10-01-2012', 1000.00, ' ', 1000.00]]
     end
   end
 
@@ -31,7 +31,7 @@ describe Account do
       account = Account.new
       account.deposit(1000.00, '10-01-2012')
       account.withdraw(500.00, '14-01-2012')
-      expect(account.transactions).to eq [['10-01-2012', 1000.00, ' ', 1000.00], ['14-01-2012', 500.00, ' ', 500.00]]
+      expect(account.transactions.all).to eq [['10-01-2012', 1000.00, ' ', 1000.00], ['14-01-2012', ' ', 500.00, 500.00]]
     end
   end
 end
