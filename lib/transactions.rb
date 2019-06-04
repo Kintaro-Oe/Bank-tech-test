@@ -1,21 +1,21 @@
 class Transactions
-  attr_accessor :all
+  attr_accessor :record
 
   def initialize
-    @all = []
+    @record = []
   end
 
   def deposit(amount, date, balance)
-    amount_string = sprintf("%.2f", amount)
-    balance_string = sprintf("%.2f", balance)
-    this_transaction = [date, amount_string, ' ', balance_string]
-    @all << this_transaction
+    this_transaction = [date, two_decimal(amount), ' ', two_decimal(balance)]
+    @record << this_transaction
   end
 
   def withdraw(amount, date, balance)
-    amount_string = sprintf("%.2f", amount)
-    balance_string = sprintf("%.2f", balance)
-    this_transaction = [date, ' ', amount_string, balance_string]
-    @all << this_transaction
+    this_transaction = [date, ' ', two_decimal(amount), two_decimal(balance)]
+    @record << this_transaction
+  end
+
+  def two_decimal(input)
+    sprintf("%.2f", input)
   end
 end

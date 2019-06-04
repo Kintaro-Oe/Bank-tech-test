@@ -4,7 +4,6 @@ Bank Tech Test
 
 This is mini banking program written in Ruby, which you can interact with via a REPL, such as IRB. You are able to create an account, make deposits, withdrawals and print your statement.
 
-
 ### Technologies Used
 __Development Environment__
 
@@ -16,8 +15,19 @@ __Test Environment__
 * Analytics: Simplecov, RuboCop
 
 
-### User stories - Features
+### User stories & Specifications
 ```
+Specifications
+
+* make deposits
+* make withdrawals
+* print account statement
+  * see transaction date
+  * see deposits debited on the account
+  * see withdrawals credited on the account
+  * see balance
+
+---------
 As a User
 So that I can save money
 I would like to create a bank account
@@ -37,19 +47,22 @@ I would like transactions to have dates
 As a User
 So that I can see my balance and transaction details
 I would like to print my statement
-
-
-Specifications
-
-* make deposits
-* make withdrawals
-* print account statement
-  * see transaction date
-  * see deposits debited on the account
-  * see withdrawals credited on the account
-  * see balance
 ```
 
+### Structure & Responsibilities
+| account.rb |
+| --- |
+| has a balance
+| balance can be updated
+
+| transaction.rb |
+| --- |
+| has a record
+| record can be updated
+
+| display.rb |
+| --- |
+| can display a statement of formatted transactions
 
 ### Example in irb
 
@@ -64,11 +77,11 @@ Specifications
  => [["10-01-2012", "1000.00", " ", "1000.00"], ["13-01-2012", "2000.00", " ", "3000.00"]]
 2.6.0 :005 > myAccount.withdraw(500.00, '14-01-2012')
  => [["10-01-2012", "1000.00", " ", "1000.00"], ["13-01-2012", "2000.00", " ", "3000.00"], ["14-01-2012", " ", "500.00", "2500.00"]]
-2.6.0 :006 > PrintOut.statement_of(myAccount.transactions)
+2.6.0 :006 > Display.statement_of(myAccount.transactions)
 date || credit || debit || balance
-10-01-2012 || 1000.00 ||   || 1000.00
-13-01-2012 || 2000.00 ||   || 3000.00
-14-01-2012 ||   || 500.00 || 2500.00
+10/01/2012 || 1000.00 ||   || 1000.00
+13/01/2012 || 2000.00 ||   || 3000.00
+14/01/2012 ||   || 500.00 || 2500.00
  => "bank statement printed"
 ```
 

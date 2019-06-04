@@ -1,7 +1,7 @@
-class PrintOut
-  def self.statement_of(transactions)
+class Display
+  def self.statement_of(account_transactions)
     puts 'date || credit || debit || balance'
-    transactions.all.map do |transaction|
+    account_transactions.record.map do |transaction|
       puts transaction.join(" || ")
     end
 
