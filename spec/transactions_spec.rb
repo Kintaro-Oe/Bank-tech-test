@@ -5,8 +5,8 @@ describe Transactions do
     it 'builds and stores the current transactions' do
       transaction = described_class.new
       balance = 1000.00
-      transaction.deposit(1000.00, '10/01/2012', balance)
-      expect(transaction.record).to eq(
+      update_transactions = transaction.deposit(1000.00, '10/01/2012', balance)
+      expect(update_transactions).to eq(
         [['10/01/2012', '1000.00', ' ', '1000.00']]
       )
     end
